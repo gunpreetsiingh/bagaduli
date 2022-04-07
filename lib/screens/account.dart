@@ -21,8 +21,8 @@ class _AccountState extends State<Account> {
             gradient: RadialGradient(
               radius: 1,
               colors: [
-                Constants.colorRed,
-                Constants.colorDarkRed,
+                Constants.colorLight,
+                Constants.colorDark,
               ],
             ),
           ),

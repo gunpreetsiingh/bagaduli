@@ -2,7 +2,7 @@ import 'package:bagaduli/constants.dart';
 import 'package:flutter/material.dart';
 
 class Videos extends StatefulWidget {
-  const Videos({ Key? key }) : super(key: key);
+  const Videos({Key? key}) : super(key: key);
 
   @override
   _VideosState createState() => _VideosState();
@@ -21,8 +21,8 @@ class _VideosState extends State<Videos> {
             gradient: RadialGradient(
               radius: 1,
               colors: [
-                Constants.colorRed,
-                Constants.colorDarkRed,
+                Constants.colorLight,
+                Constants.colorDark,
               ],
             ),
           ),

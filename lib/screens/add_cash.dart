@@ -21,8 +21,8 @@ class _AddCashState extends State<AddCash> {
             gradient: RadialGradient(
               radius: 1,
               colors: [
-                Constants.colorRed,
-                Constants.colorDarkRed,
+                Constants.colorLight,
+                Constants.colorDark,
               ],
             ),
           ),

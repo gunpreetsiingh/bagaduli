@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Constants {
-  static var colorDarkRed = const Color.fromRGBO(136, 45, 44, 1);
-  static var colorDark = const Color(0XFF393939);
-  static var colorRed = Colors.red;
+  static var colorDark = const Color(0XFFf99c10);
+  static var colorLight = const Color(0XFFd9dd1b);
+  static var colorYellow = Colors.yellow;
 
   static var tsbw14 = GoogleFonts.changaOne(
     color: Colors.white,
@@ -23,6 +23,26 @@ class Constants {
 
   static var tsbw28 = GoogleFonts.changaOne(
     color: Colors.white,
+    fontSize: 28,
+  );
+
+  static var tsbb14 = GoogleFonts.changaOne(
+    color: Colors.black,
+    fontSize: 14,
+  );
+
+  static var tsbb16 = GoogleFonts.changaOne(
+    color: Colors.black,
+    fontSize: 16,
+  );
+
+  static var tsbb22 = GoogleFonts.changaOne(
+    color: Colors.black,
+    fontSize: 22,
+  );
+
+  static var tsbb28 = GoogleFonts.changaOne(
+    color: Colors.black,
     fontSize: 28,
   );
 
@@ -45,4 +65,16 @@ class Constants {
     color: colorDark,
     fontSize: 16,
   );
+
+  static void showSnackBar(String title, bool error, BuildContext context) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        backgroundColor: error ? Colors.red : Colors.black,
+        content: Text(
+          title,
+          style: tsbw16,
+        ),
+      ),
+    );
+  }
 }

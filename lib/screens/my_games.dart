@@ -2,7 +2,7 @@ import 'package:bagaduli/constants.dart';
 import 'package:flutter/material.dart';
 
 class MyGames extends StatefulWidget {
-  const MyGames({ Key? key }) : super(key: key);
+  const MyGames({Key? key}) : super(key: key);
 
   @override
   _MyGamesState createState() => _MyGamesState();
@@ -21,8 +21,8 @@ class _MyGamesState extends State<MyGames> {
             gradient: RadialGradient(
               radius: 1,
               colors: [
-                Constants.colorRed,
-                Constants.colorDarkRed,
+                Constants.colorLight,
+                Constants.colorDark,
               ],
             ),
           ),

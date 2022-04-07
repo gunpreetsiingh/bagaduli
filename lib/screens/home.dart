@@ -2,6 +2,7 @@ import 'package:bagaduli/constants.dart';
 import 'package:bagaduli/screens/account.dart';
 import 'package:bagaduli/screens/add_cash.dart';
 import 'package:bagaduli/screens/bonus.dart';
+import 'package:bagaduli/screens/game.dart';
 import 'package:bagaduli/screens/my_games.dart';
 import 'package:bagaduli/screens/notifications.dart';
 import 'package:bagaduli/screens/refer_and_earn.dart';
@@ -27,8 +28,8 @@ class _HomeState extends State<Home> {
             gradient: RadialGradient(
               radius: 1,
               colors: [
-                Constants.colorRed,
-                Constants.colorDarkRed,
+                Constants.colorLight,
+                Constants.colorDark,
               ],
             ),
           ),
@@ -37,12 +38,12 @@ class _HomeState extends State<Home> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
-                color: Colors.red,
+                color: Constants.colorLight,
                 alignment: Alignment.center,
                 padding: const EdgeInsets.all(5),
                 child: Text(
                   '23216 PLAYERS ONLINE',
-                  style: Constants.tsbw16,
+                  style: Constants.tsbb16,
                 ),
               ),
               Container(
@@ -72,11 +73,10 @@ class _HomeState extends State<Home> {
                                     Border.all(color: Colors.white, width: 2),
                                 borderRadius: BorderRadius.circular(100),
                               ),
-                              child: const CircleAvatar(
-                                backgroundImage: NetworkImage(
-                                    'https://brisksmsuganda.com/wp-content/uploads/2021/05/placeholder.png'),
-                                foregroundImage: NetworkImage(
-                                    'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80'),
+                              child: CircleAvatar(
+                                backgroundColor: Constants.colorDark,
+                                foregroundImage: const NetworkImage(
+                                    'https://images.unsplash.com/photo-1541290431335-1f4c2152e899?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80'),
                                 radius: 16,
                               ),
                             ),
@@ -123,28 +123,34 @@ class _HomeState extends State<Home> {
                                   ),
                                   Text(
                                     'Cash Game',
-                                    style: Constants.tsbd14,
+                                    style: Constants.tsbb14,
                                   )
                                 ],
                               ),
                             ),
-                            Container(
-                              padding: const EdgeInsets.all(10),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Image.asset('assets/practiceMode.png'),
-                                  const SizedBox(
-                                    height: 5,
-                                  ),
-                                  Text(
-                                    'Practice Mode',
-                                    style: Constants.tsbw14,
-                                  )
-                                ],
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => const Game()));
+                              },
+                              child: Container(
+                                padding: const EdgeInsets.all(10),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(15),
+                                ),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Image.asset('assets/practiceMode.png'),
+                                    const SizedBox(
+                                      height: 5,
+                                    ),
+                                    Text(
+                                      'Practice Mode',
+                                      style: Constants.tsbw14,
+                                    )
+                                  ],
+                                ),
                               ),
                             ),
                             Container(
@@ -195,15 +201,15 @@ class _HomeState extends State<Home> {
                                       gradient: RadialGradient(
                                         radius: 1,
                                         colors: [
-                                          Constants.colorRed,
-                                          Constants.colorDarkRed,
+                                          Constants.colorLight,
+                                          Constants.colorDark,
                                         ],
                                       ),
                                     ),
                                     child: Text(
                                       'DEALS',
                                       textAlign: TextAlign.center,
-                                      style: Constants.tsbw28,
+                                      style: Constants.tsbb28,
                                     ),
                                   ),
                                   Container(
@@ -224,12 +230,12 @@ class _HomeState extends State<Home> {
                                         bottomLeft: Radius.circular(15),
                                         bottomRight: Radius.circular(15),
                                       ),
-                                      color: Constants.colorDarkRed,
+                                      color: Constants.colorDark,
                                     ),
                                     child: Text(
                                       'SELECT TABLE',
                                       textAlign: TextAlign.center,
-                                      style: Constants.tsbw22,
+                                      style: Constants.tsbb22,
                                     ),
                                   ),
                                 ],
@@ -259,15 +265,15 @@ class _HomeState extends State<Home> {
                                       gradient: RadialGradient(
                                         radius: 1,
                                         colors: [
-                                          Constants.colorRed,
-                                          Constants.colorDarkRed,
+                                          Constants.colorLight,
+                                          Constants.colorDark,
                                         ],
                                       ),
                                     ),
                                     child: Text(
                                       '1000 POOL',
                                       textAlign: TextAlign.center,
-                                      style: Constants.tsbw28,
+                                      style: Constants.tsbb28,
                                     ),
                                   ),
                                   Container(
@@ -288,12 +294,12 @@ class _HomeState extends State<Home> {
                                         bottomLeft: Radius.circular(15),
                                         bottomRight: Radius.circular(15),
                                       ),
-                                      color: Constants.colorDarkRed,
+                                      color: Constants.colorDark,
                                     ),
                                     child: Text(
                                       'SELECT TABLE',
                                       textAlign: TextAlign.center,
-                                      style: Constants.tsbw22,
+                                      style: Constants.tsbb22,
                                     ),
                                   ),
                                 ],
@@ -331,7 +337,7 @@ class _HomeState extends State<Home> {
                           width: double.infinity,
                           padding: const EdgeInsets.all(15),
                           decoration: BoxDecoration(
-                            color: Constants.colorRed,
+                            color: Constants.colorLight,
                             border: Border.all(
                               color: Colors.white,
                               width: 3,
@@ -342,7 +348,7 @@ class _HomeState extends State<Home> {
                           child: Text(
                             'VIDEO TUTORIALS',
                             textAlign: TextAlign.center,
-                            style: Constants.tsbw14,
+                            style: Constants.tsbb14,
                           ),
                         ),
                       ),
@@ -355,7 +361,7 @@ class _HomeState extends State<Home> {
               ),
               const Spacer(),
               Container(
-                color: Colors.red,
+                color: Constants.colorLight,
                 padding: const EdgeInsets.all(5),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -381,7 +387,7 @@ class _HomeState extends State<Home> {
                             Text(
                               'MY\nGAMES',
                               textAlign: TextAlign.center,
-                              style: Constants.tsbw14,
+                              style: Constants.tsbb14,
                             )
                           ],
                         ),
@@ -407,7 +413,7 @@ class _HomeState extends State<Home> {
                             Text(
                               'REFER & EARN\n₹ 1000',
                               textAlign: TextAlign.center,
-                              style: Constants.tsbw14,
+                              style: Constants.tsbb14,
                             )
                           ],
                         ),
@@ -433,7 +439,7 @@ class _HomeState extends State<Home> {
                             Text(
                               'BONUS\n₹ 900',
                               textAlign: TextAlign.center,
-                              style: Constants.tsbw14,
+                              style: Constants.tsbb14,
                             )
                           ],
                         ),
@@ -459,7 +465,7 @@ class _HomeState extends State<Home> {
                             Text(
                               'ADD CASH\n₹ 587',
                               textAlign: TextAlign.center,
-                              style: Constants.tsbw14,
+                              style: Constants.tsbb14,
                             )
                           ],
                         ),
