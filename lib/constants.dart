@@ -69,7 +69,7 @@ class Constants {
   static void showSnackBar(String title, bool error, BuildContext context) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        backgroundColor: error ? Colors.red : Colors.black,
+        backgroundColor: error ? Colors.red : colorDark,
         content: Text(
           title,
           style: tsbw16,
