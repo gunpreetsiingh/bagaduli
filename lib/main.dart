@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       title: 'Bagaduli Live',
       debugShowCheckedModeBanner: false,
-      home: Game(),
+      home: Splash(),
     );
   }
 }
