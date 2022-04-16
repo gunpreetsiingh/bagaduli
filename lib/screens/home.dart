@@ -43,7 +43,7 @@ class _HomeState extends State<Home> {
                 padding: const EdgeInsets.all(5),
                 child: Text(
                   '23216 PLAYERS ONLINE',
-                  style: Constants.tsbb16,
+                  style: Constants.tsbg14,
                 ),
               ),
               Container(
@@ -69,8 +69,8 @@ class _HomeState extends State<Home> {
                             },
                             child: Container(
                               decoration: BoxDecoration(
-                                border:
-                                    Border.all(color: Colors.white, width: 2),
+                                border: Border.all(
+                                    color: Constants.colorGolden, width: 2),
                                 borderRadius: BorderRadius.circular(100),
                               ),
                               child: CircleAvatar(
@@ -89,7 +89,11 @@ class _HomeState extends State<Home> {
                               Navigator.of(context).push(MaterialPageRoute(
                                   builder: (context) => const Notifications()));
                             },
-                            child: Image.asset('assets/notification.png'),
+                            child: Icon(
+                              Icons.notifications_active_rounded,
+                              color: Constants.colorGolden,
+                              size: 32,
+                            ),
                           ),
                         ],
                       ),
@@ -101,7 +105,7 @@ class _HomeState extends State<Home> {
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
                             border: Border.all(
-                              color: Colors.white,
+                              color: Constants.colorGolden,
                               width: 2,
                             )),
                         child: Row(
@@ -185,7 +189,7 @@ class _HomeState extends State<Home> {
                             child: Container(
                               padding: const EdgeInsets.all(4),
                               decoration: BoxDecoration(
-                                color: Colors.white,
+                                color: Constants.colorGolden,
                                 borderRadius: BorderRadius.circular(20),
                               ),
                               child: Column(
@@ -209,7 +213,7 @@ class _HomeState extends State<Home> {
                                     child: Text(
                                       'DEALS',
                                       textAlign: TextAlign.center,
-                                      style: Constants.tsbb28,
+                                      style: Constants.tsbg28,
                                     ),
                                   ),
                                   Container(
@@ -235,7 +239,7 @@ class _HomeState extends State<Home> {
                                     child: Text(
                                       'SELECT TABLE',
                                       textAlign: TextAlign.center,
-                                      style: Constants.tsbb22,
+                                      style: Constants.tsbg22,
                                     ),
                                   ),
                                 ],
@@ -249,7 +253,7 @@ class _HomeState extends State<Home> {
                             child: Container(
                               padding: const EdgeInsets.all(4),
                               decoration: BoxDecoration(
-                                color: Colors.white,
+                                color: Constants.colorGolden,
                                 borderRadius: BorderRadius.circular(20),
                               ),
                               child: Column(
@@ -273,7 +277,7 @@ class _HomeState extends State<Home> {
                                     child: Text(
                                       '1000 POOL',
                                       textAlign: TextAlign.center,
-                                      style: Constants.tsbb28,
+                                      style: Constants.tsbg28,
                                     ),
                                   ),
                                   Container(
@@ -299,7 +303,7 @@ class _HomeState extends State<Home> {
                                     child: Text(
                                       'SELECT TABLE',
                                       textAlign: TextAlign.center,
-                                      style: Constants.tsbb22,
+                                      style: Constants.tsbg22,
                                     ),
                                   ),
                                 ],
@@ -339,7 +343,7 @@ class _HomeState extends State<Home> {
                           decoration: BoxDecoration(
                             color: Constants.colorLight,
                             border: Border.all(
-                              color: Colors.white,
+                              color: Constants.colorGolden,
                               width: 3,
                             ),
                             borderRadius: BorderRadius.circular(100),
@@ -348,7 +352,7 @@ class _HomeState extends State<Home> {
                           child: Text(
                             'VIDEO TUTORIALS',
                             textAlign: TextAlign.center,
-                            style: Constants.tsbb14,
+                            style: Constants.tsbg14,
                           ),
                         ),
                       ),
@@ -380,14 +384,17 @@ class _HomeState extends State<Home> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Image.asset('assets/myGames.png'),
+                            Icon(
+                              Icons.games_rounded,
+                              color: Constants.colorGolden,
+                            ),
                             const SizedBox(
                               height: 5,
                             ),
                             Text(
                               'MY\nGAMES',
                               textAlign: TextAlign.center,
-                              style: Constants.tsbb14,
+                              style: Constants.tsbg14,
                             )
                           ],
                         ),
@@ -406,14 +413,17 @@ class _HomeState extends State<Home> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Image.asset('assets/refer.png'),
+                            Icon(
+                              Icons.account_balance_wallet_rounded,
+                              color: Constants.colorGolden,
+                            ),
                             const SizedBox(
                               height: 5,
                             ),
                             Text(
                               'REFER & EARN\n₹ 1000',
                               textAlign: TextAlign.center,
-                              style: Constants.tsbb14,
+                              style: Constants.tsbg14,
                             )
                           ],
                         ),
@@ -432,14 +442,17 @@ class _HomeState extends State<Home> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Image.asset('assets/bonus.png'),
+                            Icon(
+                              Icons.redeem_rounded,
+                              color: Constants.colorGolden,
+                            ),
                             const SizedBox(
                               height: 5,
                             ),
                             Text(
                               'BONUS\n₹ 900',
                               textAlign: TextAlign.center,
-                              style: Constants.tsbb14,
+                              style: Constants.tsbg14,
                             )
                           ],
                         ),
@@ -458,14 +471,17 @@ class _HomeState extends State<Home> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Image.asset('assets/addCash.png'),
+                            Icon(
+                              Icons.payments_rounded,
+                              color: Constants.colorGolden,
+                            ),
                             const SizedBox(
                               height: 5,
                             ),
                             Text(
                               'ADD CASH\n₹ 587',
                               textAlign: TextAlign.center,
-                              style: Constants.tsbb14,
+                              style: Constants.tsbg14,
                             )
                           ],
                         ),

@@ -2,9 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Constants {
-  static var colorDark = const Color(0XFFf99c10);
-  static var colorLight = const Color(0XFFd9dd1b);
-  static var colorYellow = Colors.yellow;
+  static var colorDark = const Color(0XFF882e2c);
+  static var colorLight = const Color(0XFFff0000);
+  // static var colorYellow = Colors.yellow;
+  static var colorGolden = const Color(0XFFFFD700);
+
+  static var tsbg14 = GoogleFonts.changaOne(
+    color: colorGolden,
+    fontSize: 14,
+  );
+
+  static var tsbg22 = GoogleFonts.changaOne(
+    color: colorGolden,
+    fontSize: 22,
+  );
+
+  static var tsbg28 = GoogleFonts.changaOne(
+    color: colorGolden,
+    fontSize: 28,
+  );
 
   static var tsbw14 = GoogleFonts.changaOne(
     color: Colors.white,

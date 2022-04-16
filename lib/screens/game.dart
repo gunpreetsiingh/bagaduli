@@ -18,6 +18,7 @@ class _GameState extends State<Game> {
   int score = 0;
   int remainingBalls = 7;
   double movingBallBottom = 75, movingBallRight = 34;
+  double stickBottom = 5;
   double powerUpWidth = 0;
   int speedFactor = 0;
   bool ballMoving = false, dimBackground = true;
@@ -37,9 +38,14 @@ class _GameState extends State<Game> {
     return Container(
       height: 16,
       width: 16,
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         shape: BoxShape.circle,
-        color: Colors.white,
+        gradient: RadialGradient(
+          colors: [
+            Colors.white,
+            Constants.colorGolden,
+          ],
+        ),
       ),
     );
   }
@@ -52,22 +58,55 @@ class _GameState extends State<Game> {
     setState(() {
       movingBallBottom = 75;
       movingBallRight = 34;
+      stickBottom = 5;
     });
-    int speed = 10 - speedFactor;
-    if(speed < 2) {
-      speed = 2;
+    for (int i = 1; i <= 12; i++) {
+      await Future.delayed(const Duration(milliseconds: 10));
+      setState(() {
+        stickBottom += 2;
+      });
     }
-    for (int i = 1; i <= 230; i++) {
+    int speed = 10 - speedFactor;
+    if (speedFactor < 2) {
+      notEnoughPower(speed);
+    } else {
+      for (int i = 1; i <= 230; i++) {
+        await Future.delayed(Duration(milliseconds: (speed)));
+        setState(() {
+          movingBallBottom += 2;
+          if (i > 150) {
+            increment += 0.024;
+            movingBallRight += (increment * increment);
+            ;
+          }
+        });
+      }
+      await Future.delayed(const Duration(seconds: 3));
+      setState(() {
+        powerUpWidth = 0;
+        movingBallBottom = 75;
+        movingBallRight = 34;
+        stickBottom = 5;
+        dimBackground = true;
+      });
+    }
+  }
+
+  void notEnoughPower(int speed) async {
+    double increment = 0;
+    for (int i = 1; i <= 150; i++) {
       await Future.delayed(Duration(milliseconds: (speed)));
       setState(() {
         movingBallBottom += 2;
-        if (i > 150) {
-          increment += 0.024;
-          movingBallRight += (increment * increment);
-          ;
-        }
       });
     }
+    for (int i = 1; i <= 150; i++) {
+      await Future.delayed(Duration(milliseconds: (speed)));
+      setState(() {
+        movingBallBottom -= 2;
+      });
+    }
+    Constants.showSnackBar('Not enough power into the ball!', false, context);
     await Future.delayed(const Duration(seconds: 3));
     setState(() {
       powerUpWidth = 0;
@@ -102,13 +141,13 @@ class _GameState extends State<Game> {
                 children: [
                   Text(
                     'PRACTICE\nMODE',
-                    style: Constants.tsbw28,
+                    style: Constants.tsbg28,
                   ),
                   const Spacer(),
                   Text(
                     'SCORE\n$score',
                     textAlign: TextAlign.end,
-                    style: Constants.tsbw28,
+                    style: Constants.tsbg28,
                   ),
                 ],
               ),
@@ -132,105 +171,104 @@ class _GameState extends State<Game> {
               ],
             ),
           ),
-          Visibility(
-            visible: dimBackground,
-            child: Container(
-              height: size.height,
-              width: size.width,
-              color: Colors.black.withOpacity(0.75),
+          Positioned(
+            bottom: stickBottom,
+            right: 32,
+            child: RotationTransition(
+              turns: const AlwaysStoppedAnimation(165 / 360),
+              child: Container(
+                height: 50,
+                width: 7,
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Colors.white,
+                    width: 1,
+                  ),
+                  borderRadius: BorderRadius.circular(10),
+                  color: Constants.colorGolden,
+                ),
+              ),
             ),
           ),
           Visibility(
             visible: dimBackground,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Text(
-                  'Touch and hold the trigger\nto power up',
-                  textAlign: TextAlign.center,
-                  style: Constants.tsbw16,
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Container(
-                  height: 20,
-                  width: 250,
-                  padding: const EdgeInsets.all(3),
-                  alignment: Alignment.centerLeft,
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Colors.white,
-                      width: 2,
-                    ),
-                    borderRadius: BorderRadius.circular(50),
+            child: GestureDetector(
+              onTapDown: (details) async {
+                while (powerUpWidth < 244) {
+                  await Future.delayed(const Duration(milliseconds: 7));
+                  setState(() {
+                    powerUpWidth += 1;
+                  });
+                }
+                if (dimBackground) {
+                  setState(() {
+                    speedFactor = ((powerUpWidth / 244) * 10).toInt();
+                    powerUpWidth = 0;
+                    dimBackground = false;
+                  });
+                  moveBall();
+                }
+              },
+              onTapUp: (details) {
+                setState(() {
+                  speedFactor = ((powerUpWidth / 244) * 10).toInt();
+                  powerUpWidth = 0;
+                  dimBackground = false;
+                });
+                moveBall();
+              },
+              child: Container(
+                height: size.height,
+                width: size.width,
+                color: Colors.black.withOpacity(0.75),
+              ),
+            ),
+          ),
+          Positioned(
+            top: 100,
+            child: Visibility(
+              visible: dimBackground,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Text(
+                    'Touch and hold anywhere\nto power up',
+                    textAlign: TextAlign.center,
+                    style: Constants.tsbw16,
                   ),
-                  child: Container(
-                    height: 14,
-                    width: powerUpWidth,
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Container(
+                    height: 20,
+                    width: 250,
+                    padding: const EdgeInsets.all(3),
+                    alignment: Alignment.centerLeft,
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      border: Border.all(
+                        color: Colors.white,
+                        width: 2,
+                      ),
                       borderRadius: BorderRadius.circular(50),
                     ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                AvatarGlow(
-                  glowColor: Constants.colorLight,
-                  endRadius: 60.0,
-                  duration: const Duration(milliseconds: 2000),
-                  repeat: true,
-                  showTwoGlows: true,
-                  repeatPauseDuration: const Duration(milliseconds: 100),
-                  child: GestureDetector(
-                    onTapDown: (details) async {
-                      while (powerUpWidth < 244) {
-                        await Future.delayed(const Duration(milliseconds: 7));
-                        setState(() {
-                          powerUpWidth += 1;
-                        });
-                      }
-                      if (dimBackground) {
-                        setState(() {
-                          speedFactor = ((powerUpWidth / 244) * 10).toInt();
-                          powerUpWidth = 0;
-                          dimBackground = false;
-                        });
-                        moveBall();
-                      }
-                    },
-                    onTapUp: (details) {
-                      setState(() {
-                        speedFactor = ((powerUpWidth / 244) * 10).toInt();
-                        powerUpWidth = 0;
-                        dimBackground = false;
-                      });
-                      moveBall();
-                    },
                     child: Container(
-                      padding: const EdgeInsets.all(16),
+                      height: 14,
+                      width: powerUpWidth,
                       decoration: BoxDecoration(
-                        color: Constants.colorDark,
-                        shape: BoxShape.circle,
-                      ),
-                      child: const Icon(
-                        Icons.bolt_rounded,
                         color: Colors.white,
-                        size: 24,
+                        borderRadius: BorderRadius.circular(50),
                       ),
                     ),
                   ),
-                ),
-                const SizedBox(
-                  height: 50,
-                ),
-              ],
+                  const SizedBox(
+                    height: 10,
+                  ),
+                ],
+              ),
             ),
-          )
+          ),
         ],
       ),
     );
