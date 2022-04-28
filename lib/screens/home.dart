@@ -2,9 +2,11 @@ import 'package:bagaduli/constants.dart';
 import 'package:bagaduli/screens/account.dart';
 import 'package:bagaduli/screens/add_cash.dart';
 import 'package:bagaduli/screens/bonus.dart';
+import 'package:bagaduli/screens/deals.dart';
 import 'package:bagaduli/screens/game.dart';
 import 'package:bagaduli/screens/my_games.dart';
 import 'package:bagaduli/screens/notifications.dart';
+import 'package:bagaduli/screens/pool.dart';
 import 'package:bagaduli/screens/refer_and_earn.dart';
 import 'package:bagaduli/screens/videos.dart';
 import 'package:flutter/material.dart';
@@ -82,7 +84,10 @@ class _HomeState extends State<Home> {
                             ),
                           ),
                           const Spacer(),
-                          Image.asset('assets/brandingWhite.png'),
+                          Image.asset(
+                            'assets/dashboard-branding.png',
+                            height: 75,
+                          ),
                           const Spacer(),
                           GestureDetector(
                             onTap: () {
@@ -91,6 +96,20 @@ class _HomeState extends State<Home> {
                             },
                             child: Icon(
                               Icons.notifications_active_rounded,
+                              color: Constants.colorGolden,
+                              size: 32,
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => const Videos()));
+                            },
+                            child: Icon(
+                              Icons.play_circle_outline_rounded,
                               color: Constants.colorGolden,
                               size: 32,
                             ),
@@ -115,7 +134,7 @@ class _HomeState extends State<Home> {
                             Container(
                               padding: const EdgeInsets.all(10),
                               decoration: BoxDecoration(
-                                color: Colors.white,
+                                color: Constants.colorGolden,
                                 borderRadius: BorderRadius.circular(15),
                               ),
                               child: Column(
@@ -186,63 +205,58 @@ class _HomeState extends State<Home> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Expanded(
-                            child: Container(
-                              padding: const EdgeInsets.all(4),
-                              decoration: BoxDecoration(
-                                color: Constants.colorGolden,
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              child: Column(
-                                children: [
-                                  Container(
-                                    width: double.infinity,
-                                    padding: const EdgeInsets.all(15),
-                                    decoration: BoxDecoration(
-                                      borderRadius: const BorderRadius.only(
-                                        topLeft: Radius.circular(15),
-                                        topRight: Radius.circular(15),
-                                      ),
-                                      gradient: RadialGradient(
-                                        radius: 1,
-                                        colors: [
-                                          Constants.colorLight,
-                                          Constants.colorDark,
-                                        ],
-                                      ),
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => const Deals()));
+                              },
+                              child: Container(
+                                padding: const EdgeInsets.all(4),
+                                decoration: const BoxDecoration(
+                                  image: DecorationImage(
+                                    image: AssetImage(
+                                      'assets/dashboard-tile-1.png',
                                     ),
-                                    child: Text(
-                                      'DEALS',
-                                      textAlign: TextAlign.center,
-                                      style: Constants.tsbg28,
-                                    ),
+                                    fit: BoxFit.fill,
                                   ),
-                                  Container(
-                                    padding: const EdgeInsets.all(5),
-                                    color: Colors.white,
-                                    alignment: Alignment.center,
-                                    child: Text(
-                                      '6537 PLAYING ONLINE',
-                                      textAlign: TextAlign.center,
-                                      style: Constants.tsbd12,
-                                    ),
-                                  ),
-                                  Container(
-                                    width: double.infinity,
-                                    padding: const EdgeInsets.all(10),
-                                    decoration: BoxDecoration(
-                                      borderRadius: const BorderRadius.only(
-                                        bottomLeft: Radius.circular(15),
-                                        bottomRight: Radius.circular(15),
+                                ),
+                                child: Column(
+                                  children: [
+                                    Container(
+                                      width: double.infinity,
+                                      padding: const EdgeInsets.only(
+                                        top: 40,
+                                        bottom: 20,
+                                        left: 15,
+                                        right: 15,
                                       ),
-                                      color: Constants.colorDark,
+                                      child: Text(
+                                        'DEALS',
+                                        textAlign: TextAlign.center,
+                                        style: Constants.tsbg28,
+                                      ),
                                     ),
-                                    child: Text(
-                                      'SELECT TABLE',
-                                      textAlign: TextAlign.center,
-                                      style: Constants.tsbg22,
+                                    Container(
+                                      padding: const EdgeInsets.all(5),
+                                      color: Colors.white,
+                                      alignment: Alignment.center,
+                                      child: Text(
+                                        '6537 PLAYING ONLINE',
+                                        textAlign: TextAlign.center,
+                                        style: Constants.tsbd12,
+                                      ),
                                     ),
-                                  ),
-                                ],
+                                    Container(
+                                      width: double.infinity,
+                                      padding: const EdgeInsets.all(10),
+                                      child: Text(
+                                        'SELECT TABLE',
+                                        textAlign: TextAlign.center,
+                                        style: Constants.tsbg22,
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
@@ -250,63 +264,58 @@ class _HomeState extends State<Home> {
                             width: 15,
                           ),
                           Expanded(
-                            child: Container(
-                              padding: const EdgeInsets.all(4),
-                              decoration: BoxDecoration(
-                                color: Constants.colorGolden,
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              child: Column(
-                                children: [
-                                  Container(
-                                    width: double.infinity,
-                                    padding: const EdgeInsets.all(15),
-                                    decoration: BoxDecoration(
-                                      borderRadius: const BorderRadius.only(
-                                        topLeft: Radius.circular(15),
-                                        topRight: Radius.circular(15),
-                                      ),
-                                      gradient: RadialGradient(
-                                        radius: 1,
-                                        colors: [
-                                          Constants.colorLight,
-                                          Constants.colorDark,
-                                        ],
-                                      ),
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => const Pool()));
+                              },
+                              child: Container(
+                                padding: const EdgeInsets.all(4),
+                                decoration: const BoxDecoration(
+                                  image: DecorationImage(
+                                    image: AssetImage(
+                                      'assets/dashboard-tile-2.png',
                                     ),
-                                    child: Text(
-                                      '1000 POOL',
-                                      textAlign: TextAlign.center,
-                                      style: Constants.tsbg28,
-                                    ),
+                                    fit: BoxFit.fill,
                                   ),
-                                  Container(
-                                    padding: const EdgeInsets.all(5),
-                                    color: Colors.white,
-                                    alignment: Alignment.center,
-                                    child: Text(
-                                      '16679 PLAYING ONLINE',
-                                      textAlign: TextAlign.center,
-                                      style: Constants.tsbd12,
-                                    ),
-                                  ),
-                                  Container(
-                                    width: double.infinity,
-                                    padding: const EdgeInsets.all(10),
-                                    decoration: BoxDecoration(
-                                      borderRadius: const BorderRadius.only(
-                                        bottomLeft: Radius.circular(15),
-                                        bottomRight: Radius.circular(15),
+                                ),
+                                child: Column(
+                                  children: [
+                                    Container(
+                                      width: double.infinity,
+                                      padding: const EdgeInsets.only(
+                                        top: 40,
+                                        bottom: 20,
+                                        left: 15,
+                                        right: 15,
                                       ),
-                                      color: Constants.colorDark,
+                                      child: Text(
+                                        '1000 POOL',
+                                        textAlign: TextAlign.center,
+                                        style: Constants.tsbg28,
+                                      ),
                                     ),
-                                    child: Text(
-                                      'SELECT TABLE',
-                                      textAlign: TextAlign.center,
-                                      style: Constants.tsbg22,
+                                    Container(
+                                      padding: const EdgeInsets.all(5),
+                                      color: Colors.white,
+                                      alignment: Alignment.center,
+                                      child: Text(
+                                        '16679 PLAYING ONLINE',
+                                        textAlign: TextAlign.center,
+                                        style: Constants.tsbd12,
+                                      ),
                                     ),
-                                  ),
-                                ],
+                                    Container(
+                                      width: double.infinity,
+                                      padding: const EdgeInsets.all(10),
+                                      child: Text(
+                                        'SELECT TABLE',
+                                        textAlign: TextAlign.center,
+                                        style: Constants.tsbg22,
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
@@ -327,33 +336,6 @@ class _HomeState extends State<Home> {
                           'ADVERTISEMENT',
                           textAlign: TextAlign.center,
                           style: Constants.tsbd14,
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => const Videos()));
-                        },
-                        child: Container(
-                          width: double.infinity,
-                          padding: const EdgeInsets.all(15),
-                          decoration: BoxDecoration(
-                            color: Constants.colorLight,
-                            border: Border.all(
-                              color: Constants.colorGolden,
-                              width: 3,
-                            ),
-                            borderRadius: BorderRadius.circular(100),
-                          ),
-                          alignment: Alignment.center,
-                          child: Text(
-                            'VIDEO TUTORIALS',
-                            textAlign: TextAlign.center,
-                            style: Constants.tsbg14,
-                          ),
                         ),
                       ),
                       const SizedBox(
