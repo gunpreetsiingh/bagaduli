@@ -20,6 +20,16 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  List<double> borderWidth = [1, 2, 1, 1];
+  int selectedIndex = 0;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    // startBorderAnimation();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -45,11 +55,11 @@ class _HomeState extends State<Home> {
                 padding: const EdgeInsets.all(5),
                 child: Text(
                   '23216 PLAYERS ONLINE',
-                  style: Constants.tsbg14,
+                  style: Constants.tsbw14,
                 ),
               ),
               Container(
-                height: 529,
+                height: 542,
                 padding: const EdgeInsets.symmetric(
                   horizontal: 20,
                 ),
@@ -122,77 +132,117 @@ class _HomeState extends State<Home> {
                       Container(
                         padding: const EdgeInsets.all(4),
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            border: Border.all(
-                              color: Constants.colorGolden,
-                              width: 2,
-                            )),
+                          borderRadius: BorderRadius.circular(20),
+                          // border: Border.all(
+                          //   color: Constants.colorGolden,
+                          //   width: 2,
+                          // ),
+                        ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Container(
-                              padding: const EdgeInsets.all(10),
-                              decoration: BoxDecoration(
-                                color: Constants.colorGolden,
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Image.asset('assets/cashGame.png'),
-                                  const SizedBox(
-                                    height: 5,
+                            GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  selectedIndex = 0;
+                                });
+                              },
+                              child: Opacity(
+                                opacity: selectedIndex == 0 ? 1 : 0.4,
+                                child: Container(
+                                  padding: const EdgeInsets.all(10),
+                                  decoration: BoxDecoration(
+                                    color: Constants.colorGolden,
+                                    borderRadius: BorderRadius.circular(15),
                                   ),
-                                  Text(
-                                    'Cash Game',
-                                    style: Constants.tsbb14,
-                                  )
-                                ],
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Image.asset('assets/cashGame.png'),
+                                      const SizedBox(
+                                        height: 5,
+                                      ),
+                                      Text(
+                                        'Cash Game',
+                                        style: Constants.tsbb14,
+                                      )
+                                    ],
+                                  ),
+                                ),
                               ),
                             ),
                             GestureDetector(
                               onTap: () {
+                                setState(() {
+                                  selectedIndex = 1;
+                                });
                                 Navigator.of(context).push(MaterialPageRoute(
                                     builder: (context) => const Game()));
                               },
-                              child: Container(
-                                padding: const EdgeInsets.all(10),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(15),
-                                ),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Image.asset('assets/practiceMode.png'),
-                                    const SizedBox(
-                                      height: 5,
-                                    ),
-                                    Text(
-                                      'Practice Mode',
-                                      style: Constants.tsbw14,
-                                    )
-                                  ],
+                              child: Opacity(
+                                opacity: selectedIndex == 1 ? 1 : 0.4,
+                                child: Container(
+                                  padding: const EdgeInsets.all(10),
+                                  decoration: BoxDecoration(
+                                    color: Constants.colorGolden,
+                                    borderRadius: BorderRadius.circular(15),
+                                  ),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      const Icon(
+                                        Icons.sports_baseball_rounded,
+                                        color: Colors.black,
+                                        size: 26,
+                                      ),
+                                      const SizedBox(
+                                        height: 5,
+                                      ),
+                                      Text(
+                                        'Practice Mode',
+                                        style: Constants.tsbb14,
+                                      )
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
-                            Container(
-                              padding: const EdgeInsets.all(10),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Image.asset('assets/tournament.png'),
-                                  const SizedBox(
-                                    height: 5,
+                            GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  selectedIndex = 2;
+                                });
+                              },
+                              child: Opacity(
+                                opacity: selectedIndex == 2 ? 1 : 0.4,
+                                child: Container(
+                                  padding: const EdgeInsets.all(10),
+                                  decoration: BoxDecoration(
+                                    color: Constants.colorGolden,
+                                    borderRadius: BorderRadius.circular(15),
                                   ),
-                                  Text(
-                                    'Tournament',
-                                    style: Constants.tsbw16,
-                                  )
-                                ],
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      const Icon(
+                                        Icons.workspace_premium_rounded,
+                                        color: Colors.black,
+                                        size: 26,
+                                      ),
+                                      const SizedBox(
+                                        height: 5,
+                                      ),
+                                      Text(
+                                        'Tournament',
+                                        style: Constants.tsbb16,
+                                      )
+                                    ],
+                                  ),
+                                ),
                               ),
                             ),
                           ],
@@ -225,8 +275,8 @@ class _HomeState extends State<Home> {
                                     Container(
                                       width: double.infinity,
                                       padding: const EdgeInsets.only(
-                                        top: 40,
-                                        bottom: 20,
+                                        top: 60,
+                                        bottom: 40,
                                         left: 15,
                                         right: 15,
                                       ),
@@ -248,7 +298,10 @@ class _HomeState extends State<Home> {
                                     ),
                                     Container(
                                       width: double.infinity,
-                                      padding: const EdgeInsets.all(10),
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 10,
+                                        vertical: 15,
+                                      ),
                                       child: Text(
                                         'SELECT TABLE',
                                         textAlign: TextAlign.center,
@@ -284,8 +337,8 @@ class _HomeState extends State<Home> {
                                     Container(
                                       width: double.infinity,
                                       padding: const EdgeInsets.only(
-                                        top: 40,
-                                        bottom: 20,
+                                        top: 60,
+                                        bottom: 40,
                                         left: 15,
                                         right: 15,
                                       ),
@@ -307,7 +360,10 @@ class _HomeState extends State<Home> {
                                     ),
                                     Container(
                                       width: double.infinity,
-                                      padding: const EdgeInsets.all(10),
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 10,
+                                        vertical: 15,
+                                      ),
                                       child: Text(
                                         'SELECT TABLE',
                                         textAlign: TextAlign.center,
@@ -330,6 +386,24 @@ class _HomeState extends State<Home> {
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(20),
+                          // border: Border(
+                          //   top: BorderSide(
+                          //     color: Constants.colorGolden,
+                          //     width: borderWidth[0],
+                          //   ),
+                          //   right: BorderSide(
+                          //     color: Constants.colorGolden,
+                          //     width: borderWidth[1],
+                          //   ),
+                          //   bottom: BorderSide(
+                          //     color: Constants.colorGolden,
+                          //     width: borderWidth[2],
+                          //   ),
+                          //   left: BorderSide(
+                          //     color: Constants.colorGolden,
+                          //     width: borderWidth[3],
+                          //   ),
+                          // ),
                         ),
                         alignment: Alignment.center,
                         child: Text(
@@ -368,7 +442,7 @@ class _HomeState extends State<Home> {
                           children: [
                             Icon(
                               Icons.games_rounded,
-                              color: Constants.colorGolden,
+                              color: Colors.white,
                             ),
                             const SizedBox(
                               height: 5,
@@ -376,7 +450,7 @@ class _HomeState extends State<Home> {
                             Text(
                               'MY\nGAMES',
                               textAlign: TextAlign.center,
-                              style: Constants.tsbg14,
+                              style: Constants.tsbw14,
                             )
                           ],
                         ),
@@ -397,7 +471,7 @@ class _HomeState extends State<Home> {
                           children: [
                             Icon(
                               Icons.account_balance_wallet_rounded,
-                              color: Constants.colorGolden,
+                              color: Colors.white,
                             ),
                             const SizedBox(
                               height: 5,
@@ -405,7 +479,7 @@ class _HomeState extends State<Home> {
                             Text(
                               'REFER & EARN\n₹ 1000',
                               textAlign: TextAlign.center,
-                              style: Constants.tsbg14,
+                              style: Constants.tsbw14,
                             )
                           ],
                         ),
@@ -426,7 +500,7 @@ class _HomeState extends State<Home> {
                           children: [
                             Icon(
                               Icons.redeem_rounded,
-                              color: Constants.colorGolden,
+                              color: Colors.white,
                             ),
                             const SizedBox(
                               height: 5,
@@ -434,7 +508,7 @@ class _HomeState extends State<Home> {
                             Text(
                               'BONUS\n₹ 900',
                               textAlign: TextAlign.center,
-                              style: Constants.tsbg14,
+                              style: Constants.tsbw14,
                             )
                           ],
                         ),
@@ -455,7 +529,7 @@ class _HomeState extends State<Home> {
                           children: [
                             Icon(
                               Icons.payments_rounded,
-                              color: Constants.colorGolden,
+                              color: Colors.white,
                             ),
                             const SizedBox(
                               height: 5,
@@ -463,7 +537,7 @@ class _HomeState extends State<Home> {
                             Text(
                               'ADD CASH\n₹ 587',
                               textAlign: TextAlign.center,
-                              style: Constants.tsbg14,
+                              style: Constants.tsbw14,
                             )
                           ],
                         ),
