@@ -11,6 +11,7 @@ import 'package:bagaduli/screens/refer_and_earn.dart';
 import 'package:bagaduli/screens/videos.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:glitters/glitters.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -94,10 +95,7 @@ class _HomeState extends State<Home> {
                             ),
                           ),
                           const Spacer(),
-                          Image.asset(
-                            'assets/dashboard-branding.png',
-                            height: 75,
-                          ),
+                          Image.asset('assets/dashboardBranding.png'),
                           const Spacer(),
                           GestureDetector(
                             onTap: () {
@@ -272,19 +270,32 @@ class _HomeState extends State<Home> {
                                 ),
                                 child: Column(
                                   children: [
-                                    Container(
-                                      width: double.infinity,
-                                      padding: const EdgeInsets.only(
-                                        top: 60,
-                                        bottom: 40,
-                                        left: 15,
-                                        right: 15,
-                                      ),
-                                      child: Text(
-                                        'DEALS',
-                                        textAlign: TextAlign.center,
-                                        style: Constants.tsbg28,
-                                      ),
+                                    Stack(
+                                      alignment: Alignment.center,
+                                      children: [
+                                        const SizedBox(
+                                          height: 150,
+                                          width: 150,
+                                          child: Glitters(
+                                            interval:
+                                                Duration(milliseconds: 50),
+                                          ),
+                                        ),
+                                        Container(
+                                          width: double.infinity,
+                                          padding: const EdgeInsets.only(
+                                            top: 60,
+                                            bottom: 40,
+                                            left: 15,
+                                            right: 15,
+                                          ),
+                                          child: Text(
+                                            'DEALS',
+                                            textAlign: TextAlign.center,
+                                            style: Constants.tsbg28,
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                     Container(
                                       padding: const EdgeInsets.all(5),
@@ -299,13 +310,18 @@ class _HomeState extends State<Home> {
                                     Container(
                                       width: double.infinity,
                                       padding: const EdgeInsets.symmetric(
-                                        horizontal: 10,
-                                        vertical: 15,
+                                        horizontal: 5,
+                                        vertical: 10,
+                                      ),
+                                      margin: const EdgeInsets.all(10),
+                                      decoration: BoxDecoration(
+                                        color: Color.fromARGB(255, 0, 210, 7),
+                                        borderRadius: BorderRadius.circular(10),
                                       ),
                                       child: Text(
                                         'SELECT TABLE',
                                         textAlign: TextAlign.center,
-                                        style: Constants.tsbg22,
+                                        style: Constants.tsbw22,
                                       ),
                                     ),
                                   ],
@@ -334,19 +350,32 @@ class _HomeState extends State<Home> {
                                 ),
                                 child: Column(
                                   children: [
-                                    Container(
-                                      width: double.infinity,
-                                      padding: const EdgeInsets.only(
-                                        top: 60,
-                                        bottom: 40,
-                                        left: 15,
-                                        right: 15,
-                                      ),
-                                      child: Text(
-                                        '1000 POOL',
-                                        textAlign: TextAlign.center,
-                                        style: Constants.tsbg28,
-                                      ),
+                                    Stack(
+                                      alignment: Alignment.center,
+                                      children: [
+                                        const SizedBox(
+                                          height: 150,
+                                          width: 150,
+                                          child: Glitters(
+                                            interval:
+                                                Duration(milliseconds: 50),
+                                          ),
+                                        ),
+                                        Container(
+                                          width: double.infinity,
+                                          padding: const EdgeInsets.only(
+                                            top: 60,
+                                            bottom: 40,
+                                            left: 15,
+                                            right: 15,
+                                          ),
+                                          child: Text(
+                                            '1000 POOL',
+                                            textAlign: TextAlign.center,
+                                            style: Constants.tsbg28,
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                     Container(
                                       padding: const EdgeInsets.all(5),
@@ -361,13 +390,18 @@ class _HomeState extends State<Home> {
                                     Container(
                                       width: double.infinity,
                                       padding: const EdgeInsets.symmetric(
-                                        horizontal: 10,
-                                        vertical: 15,
+                                        horizontal: 5,
+                                        vertical: 10,
+                                      ),
+                                      margin: const EdgeInsets.all(10),
+                                      decoration: BoxDecoration(
+                                        color: Color.fromARGB(255, 0, 210, 7),
+                                        borderRadius: BorderRadius.circular(10),
                                       ),
                                       child: Text(
                                         'SELECT TABLE',
                                         textAlign: TextAlign.center,
-                                        style: Constants.tsbg22,
+                                        style: Constants.tsbw22,
                                       ),
                                     ),
                                   ],
