@@ -26,16 +26,16 @@ class _AddCashState extends State<AddCash> {
               ],
             ),
           ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const SizedBox(
-                height: 10,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: Row(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const SizedBox(
+                  height: 10,
+                ),
+                Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
@@ -57,8 +57,15 @@ class _AddCashState extends State<AddCash> {
                     ),
                   ],
                 ),
-              )
-            ],
+                const SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  'Cash Balance: ₹537.00',
+                  style: Constants.tsbg22,
+                ),
+              ],
+            ),
           ),
         ),
       ),

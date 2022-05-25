@@ -1,4 +1,5 @@
 import 'package:bagaduli/constants.dart';
+import 'package:bagaduli/screens/add_cash.dart';
 import 'package:bagaduli/screens/game_rules.dart';
 import 'package:flutter/material.dart';
 
@@ -36,7 +37,7 @@ class _DealsState extends State<Deals> {
                 alignment: Alignment.center,
                 padding: const EdgeInsets.all(5),
                 child: Text(
-                  'CASH BALANCE: ₹ 587',
+                  '23216 PLAYERS ONLINE',
                   style: Constants.tsbw14,
                 ),
               ),
@@ -75,6 +76,17 @@ class _DealsState extends State<Deals> {
                       },
                       child: const Icon(
                         Icons.info_outline_rounded,
+                        color: Colors.white,
+                      ),
+                    ),
+                    const Spacer(),
+                    IconButton(
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => const AddCash()));
+                      },
+                      icon: const Icon(
+                        Icons.account_balance_wallet_outlined,
                         color: Colors.white,
                       ),
                     ),

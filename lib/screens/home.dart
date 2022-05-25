@@ -1,3 +1,4 @@
+import 'package:avatar_glow/avatar_glow.dart';
 import 'package:bagaduli/constants.dart';
 import 'package:bagaduli/screens/account.dart';
 import 'package:bagaduli/screens/add_cash.dart';
@@ -94,8 +95,14 @@ class _HomeState extends State<Home> {
                               ),
                             ),
                           ),
+                          const SizedBox(
+                            width: 15,
+                          ),
                           const Spacer(),
-                          Image.asset('assets/dashboardBranding.png'),
+                          Image.asset(
+                            'assets/dashboardBranding.png',
+                            width: 150,
+                          ),
                           const Spacer(),
                           GestureDetector(
                             onTap: () {
@@ -274,8 +281,8 @@ class _HomeState extends State<Home> {
                                       alignment: Alignment.center,
                                       children: [
                                         const SizedBox(
-                                          height: 150,
-                                          width: 150,
+                                          height: 120,
+                                          width: 120,
                                           child: Glitters(
                                             interval:
                                                 Duration(milliseconds: 50),
@@ -284,8 +291,8 @@ class _HomeState extends State<Home> {
                                         Container(
                                           width: double.infinity,
                                           padding: const EdgeInsets.only(
-                                            top: 60,
-                                            bottom: 40,
+                                            top: 70,
+                                            bottom: 30,
                                             left: 15,
                                             right: 15,
                                           ),
@@ -321,7 +328,7 @@ class _HomeState extends State<Home> {
                                       child: Text(
                                         'SELECT TABLE',
                                         textAlign: TextAlign.center,
-                                        style: Constants.tsbw22,
+                                        style: Constants.tsbw16,
                                       ),
                                     ),
                                   ],
@@ -354,8 +361,8 @@ class _HomeState extends State<Home> {
                                       alignment: Alignment.center,
                                       children: [
                                         const SizedBox(
-                                          height: 150,
-                                          width: 150,
+                                          height: 120,
+                                          width: 120,
                                           child: Glitters(
                                             interval:
                                                 Duration(milliseconds: 50),
@@ -364,10 +371,10 @@ class _HomeState extends State<Home> {
                                         Container(
                                           width: double.infinity,
                                           padding: const EdgeInsets.only(
-                                            top: 60,
-                                            bottom: 40,
-                                            left: 15,
-                                            right: 15,
+                                            top: 70,
+                                            bottom: 30,
+                                            left: 10,
+                                            right: 10,
                                           ),
                                           child: Text(
                                             '1000 POOL',
@@ -401,7 +408,7 @@ class _HomeState extends State<Home> {
                                       child: Text(
                                         'SELECT TABLE',
                                         textAlign: TextAlign.center,
-                                        style: Constants.tsbw22,
+                                        style: Constants.tsbw16,
                                       ),
                                     ),
                                   ],
@@ -414,37 +421,66 @@ class _HomeState extends State<Home> {
                       const SizedBox(
                         height: 20,
                       ),
-                      Container(
-                        width: double.infinity,
-                        padding: const EdgeInsets.all(50),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(20),
-                          // border: Border(
-                          //   top: BorderSide(
-                          //     color: Constants.colorGolden,
-                          //     width: borderWidth[0],
-                          //   ),
-                          //   right: BorderSide(
-                          //     color: Constants.colorGolden,
-                          //     width: borderWidth[1],
-                          //   ),
-                          //   bottom: BorderSide(
-                          //     color: Constants.colorGolden,
-                          //     width: borderWidth[2],
-                          //   ),
-                          //   left: BorderSide(
-                          //     color: Constants.colorGolden,
-                          //     width: borderWidth[3],
-                          //   ),
-                          // ),
-                        ),
+                      Stack(
                         alignment: Alignment.center,
-                        child: Text(
-                          'ADVERTISEMENT',
-                          textAlign: TextAlign.center,
-                          style: Constants.tsbd14,
-                        ),
+                        children: [
+                          const Positioned(
+                            top: 0,
+                            child: SizedBox(
+                              height: 15,
+                              width: 180,
+                              child: Glitters(
+                                interval: Duration(milliseconds: 1),
+                              ),
+                            ),
+                          ),
+                          const Positioned(
+                            bottom: 0,
+                            child: SizedBox(
+                              height: 15,
+                              width: 180,
+                              child: Glitters(
+                                interval: Duration(milliseconds: 1),
+                              ),
+                            ),
+                          ),
+                          const Positioned(
+                            left: 0,
+                            child: SizedBox(
+                              height: 180,
+                              width: 15,
+                              child: Glitters(
+                                interval: Duration(milliseconds: 1),
+                              ),
+                            ),
+                          ),
+                          const Positioned(
+                            right: 0,
+                            child: SizedBox(
+                              height: 180,
+                              width: 15,
+                              child: Glitters(
+                                interval: Duration(milliseconds: 1),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            height: 150,
+                            width: double.infinity,
+                            padding: const EdgeInsets.all(50),
+                            margin: const EdgeInsets.all(15),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            alignment: Alignment.center,
+                            child: Text(
+                              'ADVERTISEMENT',
+                              textAlign: TextAlign.center,
+                              style: Constants.tsbd14,
+                            ),
+                          ),
+                        ],
                       ),
                       const SizedBox(
                         height: 20,
