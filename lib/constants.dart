@@ -5,7 +5,7 @@ class Constants {
   static var colorDark = const Color(0XFF882e2c);
   static var colorLight = const Color(0XFFff0000);
   // static var colorYellow = Colors.yellow;
-  static var colorGolden = const Color(0XFFFFD700);
+  static var colorGolden = const Color(0XFFffe455);
 
   static var tsbg14 = GoogleFonts.openSans(
     color: colorGolden,

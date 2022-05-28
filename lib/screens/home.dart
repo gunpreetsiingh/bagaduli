@@ -24,6 +24,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   List<double> borderWidth = [1, 2, 1, 1];
   int selectedIndex = 0;
+  Size? size;
 
   @override
   void initState() {
@@ -34,6 +35,7 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.transparent,
@@ -61,81 +63,83 @@ class _HomeState extends State<Home> {
                 ),
               ),
               Container(
-                height: 542,
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 20,
-                ),
+                height: size!.height - 156,
                 child: SingleChildScrollView(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
+                      Container(
+                        color: Colors.white,
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 15,
+                          vertical: 15,
+                        ),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => const Account()));
+                              },
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  border:
+                                      Border.all(color: Colors.black, width: 2),
+                                  borderRadius: BorderRadius.circular(100),
+                                ),
+                                child: CircleAvatar(
+                                  backgroundColor: Constants.colorDark,
+                                  foregroundImage: const NetworkImage(
+                                      'https://images.unsplash.com/photo-1541290431335-1f4c2152e899?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80'),
+                                  radius: 16,
+                                ),
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 15,
+                            ),
+                            const Spacer(),
+                            Image.asset(
+                              'assets/dashboardBranding.png',
+                              width: 200,
+                            ),
+                            const Spacer(),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) =>
+                                        const Notifications()));
+                              },
+                              child: Icon(
+                                Icons.notifications_active_rounded,
+                                color: Colors.black,
+                                size: 32,
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => const Videos()));
+                              },
+                              child: Icon(
+                                Icons.play_circle_outline_rounded,
+                                color: Colors.black,
+                                size: 32,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                       const SizedBox(
                         height: 15,
                       ),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => const Account()));
-                            },
-                            child: Container(
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                    color: Constants.colorGolden, width: 2),
-                                borderRadius: BorderRadius.circular(100),
-                              ),
-                              child: CircleAvatar(
-                                backgroundColor: Constants.colorDark,
-                                foregroundImage: const NetworkImage(
-                                    'https://images.unsplash.com/photo-1541290431335-1f4c2152e899?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80'),
-                                radius: 16,
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 15,
-                          ),
-                          const Spacer(),
-                          Image.asset(
-                            'assets/dashboardBranding.png',
-                            width: 150,
-                          ),
-                          const Spacer(),
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => const Notifications()));
-                            },
-                            child: Icon(
-                              Icons.notifications_active_rounded,
-                              color: Constants.colorGolden,
-                              size: 32,
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => const Videos()));
-                            },
-                            child: Icon(
-                              Icons.play_circle_outline_rounded,
-                              color: Constants.colorGolden,
-                              size: 32,
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
                       Container(
-                        padding: const EdgeInsets.all(4),
+                        padding: const EdgeInsets.symmetric(horizontal: 15),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
                           // border: Border.all(
@@ -256,167 +260,172 @@ class _HomeState extends State<Home> {
                       const SizedBox(
                         height: 20,
                       ),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Expanded(
-                            child: GestureDetector(
-                              onTap: () {
-                                Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) => const Deals()));
-                              },
-                              child: Container(
-                                padding: const EdgeInsets.all(4),
-                                decoration: const BoxDecoration(
-                                  image: DecorationImage(
-                                    image: AssetImage(
-                                      'assets/dashboard-tile-1.png',
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 15),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Expanded(
+                              child: GestureDetector(
+                                onTap: () {
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (context) => const Deals()));
+                                },
+                                child: Container(
+                                  padding: const EdgeInsets.all(4),
+                                  decoration: const BoxDecoration(
+                                    image: DecorationImage(
+                                      image: AssetImage(
+                                        'assets/dashboard-tile-1.png',
+                                      ),
+                                      fit: BoxFit.fill,
                                     ),
-                                    fit: BoxFit.fill,
                                   ),
-                                ),
-                                child: Column(
-                                  children: [
-                                    Stack(
-                                      alignment: Alignment.center,
-                                      children: [
-                                        const SizedBox(
-                                          height: 120,
-                                          width: 120,
-                                          child: Glitters(
-                                            interval:
-                                                Duration(milliseconds: 50),
+                                  child: Column(
+                                    children: [
+                                      Stack(
+                                        alignment: Alignment.center,
+                                        children: [
+                                          const SizedBox(
+                                            height: 120,
+                                            width: 120,
+                                            child: Glitters(
+                                              interval:
+                                                  Duration(milliseconds: 50),
+                                            ),
                                           ),
+                                          Container(
+                                            width: double.infinity,
+                                            padding: const EdgeInsets.only(
+                                              top: 70,
+                                              bottom: 30,
+                                              left: 15,
+                                              right: 15,
+                                            ),
+                                            child: Text(
+                                              'DEALS',
+                                              textAlign: TextAlign.center,
+                                              style: Constants.tsbg28,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      Container(
+                                        padding: const EdgeInsets.all(5),
+                                        color: Colors.white,
+                                        alignment: Alignment.center,
+                                        child: Text(
+                                          '6537 PLAYING ONLINE',
+                                          textAlign: TextAlign.center,
+                                          style: Constants.tsbd12,
                                         ),
-                                        Container(
-                                          width: double.infinity,
-                                          padding: const EdgeInsets.only(
-                                            top: 70,
-                                            bottom: 30,
-                                            left: 15,
-                                            right: 15,
-                                          ),
-                                          child: Text(
-                                            'DEALS',
-                                            textAlign: TextAlign.center,
-                                            style: Constants.tsbg28,
-                                          ),
+                                      ),
+                                      Container(
+                                        width: double.infinity,
+                                        padding: const EdgeInsets.symmetric(
+                                          horizontal: 5,
+                                          vertical: 10,
                                         ),
-                                      ],
-                                    ),
-                                    Container(
-                                      padding: const EdgeInsets.all(5),
-                                      color: Colors.white,
-                                      alignment: Alignment.center,
-                                      child: Text(
-                                        '6537 PLAYING ONLINE',
-                                        textAlign: TextAlign.center,
-                                        style: Constants.tsbd12,
+                                        margin: const EdgeInsets.all(10),
+                                        decoration: BoxDecoration(
+                                          color: Color.fromARGB(255, 0, 210, 7),
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                        ),
+                                        child: Text(
+                                          'SELECT TABLE',
+                                          textAlign: TextAlign.center,
+                                          style: Constants.tsbw16,
+                                        ),
                                       ),
-                                    ),
-                                    Container(
-                                      width: double.infinity,
-                                      padding: const EdgeInsets.symmetric(
-                                        horizontal: 5,
-                                        vertical: 10,
-                                      ),
-                                      margin: const EdgeInsets.all(10),
-                                      decoration: BoxDecoration(
-                                        color: Color.fromARGB(255, 0, 210, 7),
-                                        borderRadius: BorderRadius.circular(10),
-                                      ),
-                                      child: Text(
-                                        'SELECT TABLE',
-                                        textAlign: TextAlign.center,
-                                        style: Constants.tsbw16,
-                                      ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                          const SizedBox(
-                            width: 15,
-                          ),
-                          Expanded(
-                            child: GestureDetector(
-                              onTap: () {
-                                Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) => const Pool()));
-                              },
-                              child: Container(
-                                padding: const EdgeInsets.all(4),
-                                decoration: const BoxDecoration(
-                                  image: DecorationImage(
-                                    image: AssetImage(
-                                      'assets/dashboard-tile-2.png',
+                            const SizedBox(
+                              width: 15,
+                            ),
+                            Expanded(
+                              child: GestureDetector(
+                                onTap: () {
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (context) => const Pool()));
+                                },
+                                child: Container(
+                                  padding: const EdgeInsets.all(4),
+                                  decoration: const BoxDecoration(
+                                    image: DecorationImage(
+                                      image: AssetImage(
+                                        'assets/dashboard-tile-2.png',
+                                      ),
+                                      fit: BoxFit.fill,
                                     ),
-                                    fit: BoxFit.fill,
                                   ),
-                                ),
-                                child: Column(
-                                  children: [
-                                    Stack(
-                                      alignment: Alignment.center,
-                                      children: [
-                                        const SizedBox(
-                                          height: 120,
-                                          width: 120,
-                                          child: Glitters(
-                                            interval:
-                                                Duration(milliseconds: 50),
+                                  child: Column(
+                                    children: [
+                                      Stack(
+                                        alignment: Alignment.center,
+                                        children: [
+                                          const SizedBox(
+                                            height: 120,
+                                            width: 120,
+                                            child: Glitters(
+                                              interval:
+                                                  Duration(milliseconds: 50),
+                                            ),
                                           ),
+                                          Container(
+                                            width: double.infinity,
+                                            padding: const EdgeInsets.only(
+                                              top: 70,
+                                              bottom: 30,
+                                              left: 10,
+                                              right: 10,
+                                            ),
+                                            child: Text(
+                                              '1000 POOL',
+                                              textAlign: TextAlign.center,
+                                              style: Constants.tsbg28,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      Container(
+                                        padding: const EdgeInsets.all(5),
+                                        color: Colors.white,
+                                        alignment: Alignment.center,
+                                        child: Text(
+                                          '16679 PLAYING ONLINE',
+                                          textAlign: TextAlign.center,
+                                          style: Constants.tsbd12,
                                         ),
-                                        Container(
-                                          width: double.infinity,
-                                          padding: const EdgeInsets.only(
-                                            top: 70,
-                                            bottom: 30,
-                                            left: 10,
-                                            right: 10,
-                                          ),
-                                          child: Text(
-                                            '1000 POOL',
-                                            textAlign: TextAlign.center,
-                                            style: Constants.tsbg28,
-                                          ),
+                                      ),
+                                      Container(
+                                        width: double.infinity,
+                                        padding: const EdgeInsets.symmetric(
+                                          horizontal: 5,
+                                          vertical: 10,
                                         ),
-                                      ],
-                                    ),
-                                    Container(
-                                      padding: const EdgeInsets.all(5),
-                                      color: Colors.white,
-                                      alignment: Alignment.center,
-                                      child: Text(
-                                        '16679 PLAYING ONLINE',
-                                        textAlign: TextAlign.center,
-                                        style: Constants.tsbd12,
+                                        margin: const EdgeInsets.all(10),
+                                        decoration: BoxDecoration(
+                                          color: Color.fromARGB(255, 0, 210, 7),
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                        ),
+                                        child: Text(
+                                          'SELECT TABLE',
+                                          textAlign: TextAlign.center,
+                                          style: Constants.tsbw16,
+                                        ),
                                       ),
-                                    ),
-                                    Container(
-                                      width: double.infinity,
-                                      padding: const EdgeInsets.symmetric(
-                                        horizontal: 5,
-                                        vertical: 10,
-                                      ),
-                                      margin: const EdgeInsets.all(10),
-                                      decoration: BoxDecoration(
-                                        color: Color.fromARGB(255, 0, 210, 7),
-                                        borderRadius: BorderRadius.circular(10),
-                                      ),
-                                      child: Text(
-                                        'SELECT TABLE',
-                                        textAlign: TextAlign.center,
-                                        style: Constants.tsbw16,
-                                      ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                       const SizedBox(
                         height: 20,
@@ -489,10 +498,18 @@ class _HomeState extends State<Home> {
                   ),
                 ),
               ),
-              const Spacer(),
               Container(
-                color: Constants.colorLight,
                 padding: const EdgeInsets.all(5),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Constants.colorDark.withOpacity(0.5),
+                      blurRadius: 10,
+                      spreadRadius: 5,
+                    )
+                  ],
+                ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -512,7 +529,7 @@ class _HomeState extends State<Home> {
                           children: [
                             Icon(
                               Icons.games_rounded,
-                              color: Colors.white,
+                              color: Colors.black,
                             ),
                             const SizedBox(
                               height: 5,
@@ -520,7 +537,7 @@ class _HomeState extends State<Home> {
                             Text(
                               'MY\nGAMES',
                               textAlign: TextAlign.center,
-                              style: Constants.tsbw14,
+                              style: Constants.tsbb16,
                             )
                           ],
                         ),
@@ -541,7 +558,7 @@ class _HomeState extends State<Home> {
                           children: [
                             Icon(
                               Icons.account_balance_wallet_rounded,
-                              color: Colors.white,
+                              color: Colors.black,
                             ),
                             const SizedBox(
                               height: 5,
@@ -549,7 +566,7 @@ class _HomeState extends State<Home> {
                             Text(
                               'REFER & EARN\n₹ 1000',
                               textAlign: TextAlign.center,
-                              style: Constants.tsbw14,
+                              style: Constants.tsbb14,
                             )
                           ],
                         ),
@@ -570,7 +587,7 @@ class _HomeState extends State<Home> {
                           children: [
                             Icon(
                               Icons.redeem_rounded,
-                              color: Colors.white,
+                              color: Colors.black,
                             ),
                             const SizedBox(
                               height: 5,
@@ -578,7 +595,7 @@ class _HomeState extends State<Home> {
                             Text(
                               'BONUS\n₹ 900',
                               textAlign: TextAlign.center,
-                              style: Constants.tsbw14,
+                              style: Constants.tsbb14,
                             )
                           ],
                         ),
@@ -599,7 +616,7 @@ class _HomeState extends State<Home> {
                           children: [
                             Icon(
                               Icons.payments_rounded,
-                              color: Colors.white,
+                              color: Colors.black,
                             ),
                             const SizedBox(
                               height: 5,
@@ -607,7 +624,7 @@ class _HomeState extends State<Home> {
                             Text(
                               'ADD CASH\n₹ 587',
                               textAlign: TextAlign.center,
-                              style: Constants.tsbw14,
+                              style: Constants.tsbb14,
                             )
                           ],
                         ),
