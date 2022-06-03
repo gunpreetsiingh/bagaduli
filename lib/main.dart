@@ -1,3 +1,4 @@
+import 'package:audiofileplayer/audiofileplayer.dart';
 import 'package:bagaduli/constants.dart';
 import 'package:bagaduli/screens/game.dart';
 import 'package:bagaduli/screens/home.dart';
@@ -39,6 +40,10 @@ class _SplashState extends State<Splash> {
   }
 
   void navigate() async {
+    await Future.delayed(Duration.zero);
+    Audio.load('assets/intro.mp3')
+      ..play()
+      ..dispose();
     await Future.delayed(const Duration(milliseconds: 1500));
     setState(() {
       value1 = 0;

@@ -56,14 +56,14 @@ class _HomeState extends State<Home> {
               Container(
                 color: Constants.colorLight,
                 alignment: Alignment.center,
-                padding: const EdgeInsets.all(5),
+                padding: const EdgeInsets.all(2),
                 child: Text(
                   '23216 PLAYERS ONLINE',
                   style: Constants.tsbw14,
                 ),
               ),
-              Container(
-                height: size!.height - 156,
+              SizedBox(
+                height: size!.height - 150,
                 child: SingleChildScrollView(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -73,7 +73,7 @@ class _HomeState extends State<Home> {
                         color: Colors.white,
                         padding: EdgeInsets.symmetric(
                           horizontal: 15,
-                          vertical: 15,
+                          vertical: 5,
                         ),
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -98,14 +98,25 @@ class _HomeState extends State<Home> {
                               ),
                             ),
                             const SizedBox(
-                              width: 15,
+                              width: 10,
+                            ),
+                            GestureDetector(
+                              onTap: () {},
+                              child: Icon(
+                                Icons.widgets_outlined,
+                                color: Colors.black,
+                                size: 32,
+                              ),
                             ),
                             const Spacer(),
                             Image.asset(
-                              'assets/dashboardBranding.png',
+                              'assets/branding.png',
                               width: 200,
                             ),
                             const Spacer(),
+                            const SizedBox(
+                              width: 15,
+                            ),
                             GestureDetector(
                               onTap: () {
                                 Navigator.of(context).push(MaterialPageRoute(
@@ -136,16 +147,12 @@ class _HomeState extends State<Home> {
                         ),
                       ),
                       const SizedBox(
-                        height: 15,
+                        height: 10,
                       ),
                       Container(
                         padding: const EdgeInsets.symmetric(horizontal: 15),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
-                          // border: Border.all(
-                          //   color: Constants.colorGolden,
-                          //   width: 2,
-                          // ),
                         ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -258,7 +265,7 @@ class _HomeState extends State<Home> {
                         ),
                       ),
                       const SizedBox(
-                        height: 20,
+                        height: 5,
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -297,8 +304,8 @@ class _HomeState extends State<Home> {
                                           Container(
                                             width: double.infinity,
                                             padding: const EdgeInsets.only(
-                                              top: 70,
-                                              bottom: 30,
+                                              top: 40,
+                                              bottom: 0,
                                               left: 15,
                                               right: 15,
                                             ),
@@ -324,9 +331,9 @@ class _HomeState extends State<Home> {
                                         width: double.infinity,
                                         padding: const EdgeInsets.symmetric(
                                           horizontal: 5,
-                                          vertical: 10,
+                                          vertical: 5,
                                         ),
-                                        margin: const EdgeInsets.all(10),
+                                        margin: const EdgeInsets.all(5),
                                         decoration: BoxDecoration(
                                           color: Color.fromARGB(255, 0, 210, 7),
                                           borderRadius:
@@ -378,8 +385,8 @@ class _HomeState extends State<Home> {
                                           Container(
                                             width: double.infinity,
                                             padding: const EdgeInsets.only(
-                                              top: 70,
-                                              bottom: 30,
+                                              top: 40,
+                                              bottom: 0,
                                               left: 10,
                                               right: 10,
                                             ),
@@ -405,9 +412,9 @@ class _HomeState extends State<Home> {
                                         width: double.infinity,
                                         padding: const EdgeInsets.symmetric(
                                           horizontal: 5,
-                                          vertical: 10,
+                                          vertical: 5,
                                         ),
-                                        margin: const EdgeInsets.all(10),
+                                        margin: const EdgeInsets.all(5),
                                         decoration: BoxDecoration(
                                           color: Color.fromARGB(255, 0, 210, 7),
                                           borderRadius:
@@ -428,7 +435,7 @@ class _HomeState extends State<Home> {
                         ),
                       ),
                       const SizedBox(
-                        height: 20,
+                        height: 5,
                       ),
                       Stack(
                         alignment: Alignment.center,
@@ -474,7 +481,7 @@ class _HomeState extends State<Home> {
                             ),
                           ),
                           Container(
-                            height: 150,
+                            height: 140,
                             width: double.infinity,
                             padding: const EdgeInsets.all(50),
                             margin: const EdgeInsets.all(15),
@@ -557,7 +564,7 @@ class _HomeState extends State<Home> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Icon(
-                              Icons.account_balance_wallet_rounded,
+                              Icons.payments_rounded,
                               color: Colors.black,
                             ),
                             const SizedBox(
@@ -615,7 +622,7 @@ class _HomeState extends State<Home> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Icon(
-                              Icons.payments_rounded,
+                              Icons.account_balance_wallet_rounded,
                               color: Colors.black,
                             ),
                             const SizedBox(
